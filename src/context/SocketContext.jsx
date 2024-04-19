@@ -7,9 +7,10 @@ import { scrollToBottomAnimated } from "../helpers/scrollToBottom";
 
 export const SocketContext = createContext();
 
+
 export const SocketProvider = ({ children }) => {
   const { socket, online, conectarSocket, desconectarSocket } = useSocket(
-    "http://localhost:8080"
+    "https://chat-web-backend.onrender.com/"
   );
   const { auth } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
@@ -42,7 +43,7 @@ export const SocketProvider = ({ children }) => {
       });
       setTimeout(() => {
         scrollToBottomAnimated("mensajes");
-      }, 100);
+      }, 50);
     });
   }, [socket, dispatch]);
 

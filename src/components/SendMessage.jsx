@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { SocketContext } from "../context/SocketContext";
 import { AuthContext } from "../auth/AuthContext";
 import { ChatContext } from "../context/chat/ChatContext";
+import { scrollToBottomAnimated } from "../helpers/scrollToBottom";
 
 export const SendMessage = () => {
   const [mensaje, setMensaje] = useState("");
@@ -18,7 +19,6 @@ export const SendMessage = () => {
     if (mensaje.trim().length === 0) return;
     setMensaje("");
 
-    // TODO: Emitir un evento de sockets para enviar el mensaje
     socket.emit("mensaje-personal", {
       de: auth.uid,
       para: chatState.chatActivo,

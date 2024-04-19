@@ -14,13 +14,14 @@ export const SidebarChatItem = ({ usuario }) => {
       type: types.activarChat,
       payload: usuario.uid,
     });
-
     const resp = await fetchConToken(`mensajes/${usuario.uid}`);
     dispatch({
       type: types.cargarMensajes,
       payload: resp.mensajes,
     });
-    scrollToBottom("mensajes");
+    setTimeout(() => {
+      scrollToBottom("mensajes");
+    }, 200);
   };
 
   return (
